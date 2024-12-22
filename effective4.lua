@@ -198,6 +198,7 @@ end;
 
 function Library:AddToolTip(InfoStr, HoverInstance)
 	local X, Y = Library:GetTextBounds(InfoStr, Library.Font, 14);
+	setthreadidentity(8)
 	local Tooltip = Library:Create('Frame', {
 		BackgroundColor3 = Library.MainColor,
 		BorderColor3 = Library.OutlineColor,
@@ -398,14 +399,14 @@ function Library:Unload()
 	if Library.OnUnload then
 		Library.OnUnload()
 	end
-
+	setthreadidentity(8)
 	ScreenGui:Destroy()
 end
 
 function Library:OnUnload(Callback)
 	Library.OnUnload = Callback
 end
-
+setthreadidentity(8)
 Library:GiveSignal(ScreenGui.DescendantRemoving:Connect(function(Instance)
 	if Library.RegistryMap[Instance] then
 		Library:RemoveFromRegistry(Instance);
@@ -464,7 +465,7 @@ do
 		-- Rewrote this to be placed inside the Library ScreenGui
 		-- There was some issue which caused RelativeOffset to be way off
 		-- Thus the color picker would never show
-
+		setthreadidentity(8)
 		local PickerFrameOuter = Library:Create('Frame', {
 			Name = 'Color';
 			BackgroundColor3 = Color3.new(1, 1, 1);
@@ -676,6 +677,7 @@ do
 
 		local ContextMenu = {}
 		do
+			setthreadidentity(8)
 			ContextMenu.Options = {}
 			ContextMenu.Container = Library:Create('Frame', {
 				BorderColor3 = Color3.new(),
@@ -1061,7 +1063,7 @@ do
 			ZIndex = 8;
 			Parent = PickInner;
 		});
-
+		setthreadidentity(8)
 		local ModeSelectOuter = Library:Create('Frame', {
 			BorderColor3 = Color3.new(0, 0, 0);
 			Position = UDim2.fromOffset(ToggleLabel.AbsolutePosition.X + ToggleLabel.AbsoluteSize.X + 4, ToggleLabel.AbsolutePosition.Y + 1);
@@ -2301,7 +2303,7 @@ do
 		end
 
 		local MAX_DROPDOWN_ITEMS = 8;
-
+		setthreadidentity(8)
 		local ListOuter = Library:Create('Frame', {
 			BackgroundColor3 = Color3.new(0, 0, 0);
 			BorderColor3 = Color3.new(0, 0, 0);
@@ -2717,6 +2719,7 @@ end;
 
 -- < Create other UI elements >
 do
+	setthreadidentity(8)
 	Library.NotificationArea = Library:Create('Frame', {
 		BackgroundTransparency = 1;
 		Position = UDim2.new(0, 0, 0, 40);

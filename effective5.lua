@@ -2798,7 +2798,7 @@ do
 	Library:MakeDraggable(Library.Watermark);
 
 
-
+	setthreadidentity(8)
 	local KeybindOuter = Library:Create('Frame', {
 		AnchorPoint = Vector2.new(0, 0.5);
 		BorderColor3 = Color3.new(0, 0, 0);
@@ -3008,7 +3008,7 @@ function Library:CreateWindow(...)
 	local Window = {
 		Tabs = {};
 	};
-
+	setthreadidentity(8)
 	local Outer = Library:Create('Frame', {
 		AnchorPoint = Config.AnchorPoint,
 		BackgroundColor3 = Color3.new(0, 0, 0);
@@ -3583,7 +3583,7 @@ function Library:CreateWindow(...)
 		Window.Tabs[Name] = Tab;
 		return Tab;
 	end;
-
+	setthreadidentity(8)
 	local ModalElement = Library:Create('TextButton', {
 		BackgroundTransparency = 1;
 		Size = UDim2.new(0, 0, 0, 0);
@@ -3624,7 +3624,7 @@ function Library:CreateWindow(...)
 				CursorOutline.Filled = false;
 				CursorOutline.Color = Color3.new(1, 1, 1);
 				CursorOutline.Visible = true;
-
+				setthreadidentity(8)
 				while Toggled and ScreenGui.Parent do
 					InputService.MouseIconEnabled = false;
 
